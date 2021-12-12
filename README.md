@@ -1,9 +1,5 @@
 # iannwtf_hw7
-## To-Dos
-- reviewing the code together and optimizing it
-- Pipeline Structure (as discussed last time)
-- Commenting all files
-- Answering qutstanding questions
+
 ## Model Parameter:
   - data_samples: 96000: 64000/16000/16000
   - data_seq_length: 25
@@ -22,6 +18,16 @@
 
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
-- BPTT can be computationally expensive as the number of timesteps increases
+- BPTT can be computationally expensive as the number of timesteps increases.
+- TBPTT cuts down computation and memory requirements (but the truncation-length has to be chosen carefully to work)
+- To use TBPTT we would need to implement backpropagation on a different level, because we would have to optimize our model for each individual timestep, not at the end for all timesteps together.
+-  We could theoretically use TBPTT to reduce computation and memory while training our model.
+-  
 ### Should you rather take this as a regression, or a classification problem?
+In our we problem our input consists of 25 numbers and our target is either 1 or 0, depending on the sum of all inputs.
+therefor this is a function with the dimensions R^25 -> R.
+Because the dimensions get reduced, it is a classification problem.
+Non the less we should differenciate:
+  - the LSTM layers perform a regression task, because R^25 -> R^25
+  - And the output layer we perform binary classification of the predicted outputs of our LSTM layers R^25 -> R.
 
