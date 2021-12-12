@@ -9,7 +9,7 @@
   - epochs = 2
 
 ## Model Architechture
-### LSTM Model
+### LSTM Model (with 2 layers)
   ![image](https://user-images.githubusercontent.com/93341845/145704957-ece79ffb-d57f-41a8-b70c-2cfe8ac8587f.png)
 ### LSTM Cell
   ![image](https://user-images.githubusercontent.com/93341845/145704583-9f63d377-782d-4229-84bb-006cd47af13a.png)
@@ -25,7 +25,6 @@
 -  
 ### Should you rather take this as a regression, or a classification problem?
 In our we problem our input consists of 25 numbers and our target is either 1 or 0, depending on the sum of all inputs.
-therefor this is a function with the dimensions R^25 -> {0,1}.
-Because the dimensions get reduced, it is a classification problem.
+Because this is a function with the dimensions R^25 -> {0,1}, it is a classification problem.
 
 
