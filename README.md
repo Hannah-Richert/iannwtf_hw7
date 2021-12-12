@@ -25,9 +25,7 @@
 -  
 ### Should you rather take this as a regression, or a classification problem?
 In our we problem our input consists of 25 numbers and our target is either 1 or 0, depending on the sum of all inputs.
-therefor this is a function with the dimensions R^25 -> R.
+therefor this is a function with the dimensions R^25 -> {0,1}.
 Because the dimensions get reduced, it is a classification problem.
-Non the less we should differenciate:
-  - the LSTM layers perform a regression task, because R^25 -> R^25
-  - And the output layer we perform binary classification of the predicted outputs of our LSTM layers R^25 -> R.
+
 
