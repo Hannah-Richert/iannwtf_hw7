@@ -1,8 +1,8 @@
 # iannwtf_hw7
 
 ## How to run the code:
-We used a input-pipeline, which saves and loads our datasets locally after creation.
-- tenserflow version >=2.6 required
+We made an input-pipeline, which saves and loads our datasets locally after creation.
+- tenserflow version >= 2.6 required
 - to run: `python -m pipeline`
 
 ## Outstanding Questions
