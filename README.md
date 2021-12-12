@@ -1,10 +1,10 @@
 # iannwtf_hw7
-## To-Do
+## To-Dos
 - reviewing the code together and optimizing it
 - Pipeline Structure (as discussed last time)
 - Commenting all files
 - Answering qutstanding questions
-### Model Parameter:
+## Model Parameter:
   - data_samples: 96000: 64000/16000/16000
   - data_seq_length: 25
   - batch_size: 32
