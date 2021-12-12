@@ -4,7 +4,7 @@
 
 We made an input-pipeline, which saves and loads our datasets locally after creation.
 
-- tensorflow version >= 2.6 required
+- tensorflow version >= 2.6 required (CPU works as well as GPU)
 - ensure that you are in the /iannwtf_hw7 directory
 - to run: `python -m pipeline`
 
