@@ -27,9 +27,13 @@ class LSTMcell(tf.keras.Model):
     @tf.function
     def call(self,x, states):
         (h, c_prev) = states
-        comb_xh = tf.concat([x,h],axis=-1)
 
-        # forget gate (x(t), h(t-1)) = f(t)
+        # input gate
+        x_i = self.input_gate_x(x)
+        h_i = self.input_gate_h(h)
+        i = tf.nn.sigmoid(x_i+h_i)
+
+        # forget gate
         x_f = self.forget_gate_x(x)
         h_f = self.forget_gate_h(h)
         f = tf.nn.sigmoid(x_f+h_f)
@@ -37,20 +41,15 @@ class LSTMcell(tf.keras.Model):
         # forget old context/cell info
         c_temp = f * c_prev
 
-        # input gate (x(t),h(t-1)) = i(t)
-        x_i = self.input_gate_x(x)
-        h_i = self.input_gate_h(h)
-        i = tf.nn.sigmoid(x_i+h_i)
-
         # updating cell memory
-        x_m = self.memory_gate_x(x)
-        h_m = self.memory_gate_h(h)
-        m = tf.nn.tanh(x_m+h_m)
+        x_c = self.memory_gate_x(x)
+        h_c = self.memory_gate_h(h)
+        c = tf.nn.tanh(x_c+h_c)
 
-        g = m * i
-        c_next = g + c_temp
+        m = c * i
+        c_next = m + c_temp
 
-        # main output gate
+        # output gate
         x_o = self.out_gate_x(x)
         h_o = self.out_gate_h(h)
         o = tf.nn.sigmoid(x_o+h_o)
@@ -63,13 +62,12 @@ class LSTMcell(tf.keras.Model):
 class LSTMlayer(tf.keras.Model):
 
 
-    def __init__(self,cells):
+    def __init__(self,cell):
 
         super(LSTMlayer,self).__init__()
-        # multiple cell layer
-        self.cell_one = cells[0]
-        self.cell_units = self.cell_one.units
-        #self.cell_two = cells[1]
+        self.cell = cell
+        self.cell_units = self.cell.units
+
 
     def zero_states(self,batch_size):
         h = tf.zeros((batch_size,self.cell_units),tf.float32)
@@ -79,17 +77,26 @@ class LSTMlayer(tf.keras.Model):
     @tf.function
     def call(self,x,states=None):
 
-        seq_length = x.shape[1]
+        # get sequence length  ~ time-steps
+        seq_len = x.shape[1]
 
+        # initial state
         states = self.zero_states(x.shape[0])
 
-        for t in tf.range(seq_length):
+        # array for hidden states
+        hidden_states = tf.TensorArray(dtype=tf.float32, size=seq_len)
+
+        for t in tf.range(seq_len):
 
             x_t = x[:,t,:]
 
-            states = self.cell_one(x_t, states)
+            states = self.cell(x_t, states)
 
-        outputs = states
+            # only saving the hidden-output not the cell-state
+            (h,c) = states
+            hidden_states = hidden_states.write(t, h)
+
+        outputs = tf.transpose(hidden_states.stack(), [1,0,2])
 
         return outputs
 
@@ -97,20 +104,21 @@ class LSTMlayer(tf.keras.Model):
 
 class LSTMmodel(tf.keras.Model):
 
-    def __init__(self):
+    def __init__(self,num_layer=1):
 
         super(LSTMmodel,self).__init__()
-        # multiple cell layer
-        self.first_LSTM_layer = LSTMlayer([LSTMcell(units = 25)])
-        #self.second_LSTM_layer = LSTMlayer([LSTMcell(units = 25)])
-        #self.dense = Dense(128, activation="sigmoid")
+        # two diiferent
+        self.num_layer = num_layer
+        self.first_LSTM_layer = LSTMlayer(LSTMcell(units = 25))
+        if self.num_layer == 2:
+            self.second_LSTM_layer = LSTMlayer(LSTMcell(units = 25))
         self.out = Dense(1,activation="sigmoid")
 
     @tf.function
     def call(self,x):
 
-        (x,y) = self.first_LSTM_layer(x)
-        #(x,y) = self.second_LSTM_layer(x)
-        #x = self.dense(a)
+        x = self.first_LSTM_layer(x)
+        if self.num_layer == 2:
+            x = self.second_LSTM_layer(x)
         x = self.out(x)
         return x
