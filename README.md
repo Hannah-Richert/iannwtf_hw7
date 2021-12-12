@@ -22,5 +22,6 @@
 
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
+- BPTT can be computationally expensive as the number of timesteps increases
 ### Should you rather take this as a regression, or a classification problem?
 
