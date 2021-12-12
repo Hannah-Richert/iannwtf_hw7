@@ -1,10 +1,9 @@
 # iannwtf_hw7
 
 ## How to run the code:
-- we used a pipeline, which saves and loads 
+We used a input-pipeline, which saves and loads our datasets locally after creation.
 - tenserflow version >=2.6 required
-- to run the full code: `python -m pipeline` or parts: `python -m classify` or `python -m preprocess` (in the respective directory)
-
+- to run: `python -m pipeline`
 
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
