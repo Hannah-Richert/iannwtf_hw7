@@ -10,7 +10,7 @@
 
 ## Model Architechture
 ### LSTM Model
-  ![image](https://user-images.githubusercontent.com/93341845/145703944-039b5833-1966-4a19-8801-51219efb464e.png)
+  ![image](https://user-images.githubusercontent.com/93341845/145704892-2a83e12b-d4c9-4a52-80b1-9255a1339405.png)
 ### LSTM Cell
   ![image](https://user-images.githubusercontent.com/93341845/145704583-9f63d377-782d-4229-84bb-006cd47af13a.png)
   ![image](https://user-images.githubusercontent.com/93341845/145704114-983bc81e-0347-425f-adcc-afbb291faa6c.png)
