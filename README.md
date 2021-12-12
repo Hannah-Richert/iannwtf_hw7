@@ -26,6 +26,7 @@ We made an input-pipeline, which saves and loads our datasets locally after crea
   - batch_size: 32
   - learning_rate = 0.001
   - optimizer: Adam
+  - loss = BinaryCrossentropy
   - epochs = 3
 
 ## Model Architechture
