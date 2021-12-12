@@ -12,12 +12,14 @@ args = parser.parse_args()
 
 def integration_task(seq_len, num_samples):
     """
-    ...
+    Generates our data.
+    noise is our input: random, normal, distributed numbers.
+    target categorizes the noise based on the sum of the noise and is either 0 or 1.
         Args:
-            seq_len <int>:
-            num_samples <int>:
+            seq_len <int>: number of our random numbers for our noise-sample
+            num_samples <int>: numbeer of samples the generator could yield
         Returns:
-            (noise,target) <tuple<list,list>>:
+            (noise,target) <tuple<list,list>>: tuple of our noise sample and a target, which splits the noise samples into wto categories
     """
     for i in range(num_samples):
 
@@ -57,6 +59,7 @@ remaining = ds.skip(64000)
 valid_ds = remaining.take(16000)
 test_ds = remaining.skip(16000)
 
+# locally saving the created datasets
 tf.data.experimental.save(train_ds, args.output+"/train")
 tf.data.experimental.save(valid_ds, args.output+"/valid")
 tf.data.experimental.save(test_ds, args.output+"/test")
