@@ -10,9 +10,9 @@
 
 
 ### Should you rather take this as a regression, or a classification problem?
-- In our problem: our input consists of `x` numbers (`x = sequnece length`) and our target is either `1 or 0`, depending on the `sum of all x` in the input.
-- This is a function with the dimensions `f: R^x -> {0,1}`, and therefore a **classification** problem.
-- Nice to note: in the LSTM layers we perform regression tasks with the function `f: R^x -> R` (for the last hidden_output).
+- In our problem: our input consists of `n` numbers (`n = sequnece length`) and our target is either 1 or 0, depending on the sum of all input numbers.
+- This is a function with the dimensions `f: R^n -> {0,1}`, and therefore a **classification** problem.
+- Nice to note: in the LSTM layers we perform regression tasks with the function `f: R^n -> R` (for the last hidden_output).
 
 
 ## Model Parameter:
