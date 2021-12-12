@@ -5,7 +5,7 @@
 - Commenting all files
 - Answering qutstanding questions
 ### Model Parameter:
-  - data_samples: 80000: 64000/8000/8000
+  - data_samples: 96000: 64000/16000/16000
   - data_seq_length: 25
   - batch_size: 32
   - learning_rate = 0.001
