@@ -63,7 +63,6 @@ def test(model, test_data, loss_function, is_training):
 
         # only the prediction from the last timestep
         prediction = prediction[:,-1,:]
-
         # calculating loss
         loss = loss_function(target, prediction)
 
@@ -84,7 +83,7 @@ def visualize(train_losses,valid_losses,valid_accuracies):
     Displays the losses and accuracies from the different models in a plot-grid.
     Args:
       train_losses <list<list<float>>>: mean training losses per epoch
-      valid_losses <list<list<float>>>: mean testing losses per epoch
+      valid_losses <list<list<float>>>: mean  losses per epoch
       valid_accuracies <list<list<float>>>: mean accuracies (testing dataset) per epoch
     """
 
@@ -102,7 +101,7 @@ def visualize(train_losses,valid_losses,valid_accuracies):
         axs[1,j].set_title("Last Accuracy: "+str(round(last_accuracy,4)))
 
 
-    fig.legend([" Train_ds loss"," Valid_ds loss"," Valid_ds accuracy"])
+    fig.legend([" Train_ds loss"," Valid_ds loss"," Valid_ds accuracy"],loc="lower right")
     plt.xlabel("Training epoch")
     fig.tight_layout()
     plt.show()

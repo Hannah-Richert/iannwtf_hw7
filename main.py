@@ -8,7 +8,9 @@ from classify import classify
 tf.keras.backend.clear_session()
 
 train_ds, valid_ds, test_ds = load_data()
-optimizer = tf.keras.optimizers.Adam(0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-07)
+
+learning_rate = 0.001
+optimizer = tf.keras.optimizers.Adam(learning_rate, beta_1=0.9, beta_2=0.999, epsilon=1e-07)
 
 models = [LSTMmodel(num_layer=1),LSTMmodel(num_layer=2)]
 
@@ -19,7 +21,7 @@ valid_accuracies= []
 with tf.device('/device:gpu:0'):
     # training the model
     for model in models:
-        results, trained_model = classify(model, optimizer, 2, train_ds, valid_ds)
+        results, trained_model = classify(model, optimizer, 3, train_ds, valid_ds)
         trained_model.summary()
 
         # saving results for visualization

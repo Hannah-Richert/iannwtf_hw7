@@ -16,6 +16,7 @@ def integration_task(seq_len,num_samples):
 
         # creating inputs and targets
         noise = np.random.normal(size=seq_len)
+
         target = int(np.sum(noise,axis=-1)>1)
 
         #adjusting shapes
@@ -35,8 +36,7 @@ def my_integration_task():
     num_samples = 96000
     seq_len= 25
 
-    for (x,y) in integration_task(seq_len,num_samples):
-        yield (x,y)
+    return integration_task(seq_len,num_samples)
 
 
 def load_data():
@@ -49,10 +49,14 @@ def load_data():
     """
     # creating dataset with self-defined generator
     ds = tf.data.Dataset.from_generator(my_integration_task,(tf.float32,tf.int16))
+
+    # splitting ds in training, validation and test data
     train_ds = ds.take(64000)
     remaining = ds.skip(64000)
     valid_ds = remaining.take(16000)
     test_ds = remaining.skip(16000)
+
+    # preprocessing
     train_ds = preprocess(train_ds)
     valid_ds = preprocess(valid_ds)
     test_ds = preprocess(test_ds)
