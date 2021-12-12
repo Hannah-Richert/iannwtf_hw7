@@ -73,7 +73,7 @@ def classify(model, optimizer, num_epochs, train_ds, valid_ds):
     return results, model
 
 
-
+# loading preprocessed locally saved data
 train_ds = tf.data.experimental.load(args.input+"/train",element_spec=(tf.TensorSpec(shape=(32,25,1),dtype=tf.float32, name=None),tf.TensorSpec(shape=(32,1),dtype=tf.int16, name=None)))
 valid_ds = tf.data.experimental.load(args.input+"/valid",element_spec=(tf.TensorSpec(shape=(32,25,1),dtype=tf.float32, name=None),tf.TensorSpec(shape=(32,1),dtype=tf.int16, name=None)))
 test_ds = tf.data.experimental.load(args.input+"/test",element_spec=(tf.TensorSpec(shape=(32,25,1),dtype=tf.float32, name=None),tf.TensorSpec(shape=(32,1),dtype=tf.int16, name=None)))
