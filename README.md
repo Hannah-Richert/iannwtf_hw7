@@ -1,5 +1,9 @@
 # iannwtf_hw7
-
+## To-Do
+- reviewing the code together
+- Pipeline Structure (as discussed last time)
+- Commenting all files
+- Answering qutstanding questions
 ### Model Parameter:
   - data_samples: 80000: 64000/8000/8000
   - data_seq_length: 25
