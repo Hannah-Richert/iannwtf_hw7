@@ -6,7 +6,7 @@
   - batch_size: 32
   - learning_rate = 0.001
   - optimizer: Adam
-  - epochs = 2
+  - epochs = 3
 
 ## Model Architechture
 ### LSTM Model (with 2 layers)
@@ -15,6 +15,8 @@
   ![image](https://user-images.githubusercontent.com/93341845/145704583-9f63d377-782d-4229-84bb-006cd47af13a.png)
   ![image](https://user-images.githubusercontent.com/93341845/145704114-983bc81e-0347-425f-adcc-afbb291faa6c.png)
 ### Model Results
+  ![3epochs_hw7](https://user-images.githubusercontent.com/93341845/145713794-531c2c44-fa95-4547-9983-329ffaf0a1da.png)
+
 
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
