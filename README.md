@@ -1,5 +1,11 @@
 # iannwtf_hw7
 
+## How to run the code:
+- we used a pipeline, which saves and loads 
+- tenserflow version >=2.6 required
+- to run the full code: `python -m pipeline` or parts: `python -m classify` or `python -m preprocess` (in the respective directory)
+
+
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
 - BPTT can be computationally expensive as the number of timesteps increases and can lead to gradient problems (vanishing,exploding).
