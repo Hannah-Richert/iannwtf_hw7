@@ -101,11 +101,11 @@ with tf.device('/device:gpu:0'):
         valid_losses.append(results[1])
         valid_accuracies.append(results[2])
 
-        # testing the trained model
-        # (this code snippet should only be inserted when one decided on all hyperparameters)
-        _, test_accuracy = test(
-            trained_model, test_ds, tf.keras.losses.CategoricalCrossentropy(), False)
-        print("Accuracy (test set):", test_accuracy)
+    # testing the trained model
+    # (this code snippet should only be inserted when one decided on all hyperparameters)
+    _, test_accuracy = test(
+        trained_model, test_ds, tf.keras.losses.BinaryCrossentropy(), False)
+    print("Accuracy (test set):", test_accuracy)
 
     # visualizing losses and accuracy
     visualize(train_losses, valid_losses, valid_accuracies)
