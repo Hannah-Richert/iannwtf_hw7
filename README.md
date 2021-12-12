@@ -2,7 +2,7 @@
 
 ## Outstanding Questions
 ### Can / should you use truncated BPTT here?
-- BPTT can be computationally expensive as the number of timesteps increases and can lead to gedient problems (vanishing,exploding).
+- BPTT can be computationally expensive as the number of timesteps increases and can lead to gradient problems (vanishing,exploding).
 - TBPTT cuts down computation and memory requirements (but the truncation-length has to be chosen carefully in order to work well).
 - To use TBPTT we would need to implement backpropagation on a different level or way, because we would have to optimize our model for each bundle of timesteps, not at the end for all timesteps together.
 -  We could theoretically use TBPTT to reduce computation and memory requirement while training our model.
