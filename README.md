@@ -1,6 +1,6 @@
 # iannwtf_hw7
 ## To-Do
-- reviewing the code together
+- reviewing the code together and optimizing it
 - Pipeline Structure (as discussed last time)
 - Commenting all files
 - Answering qutstanding questions
