@@ -28,7 +28,7 @@
 
 ### Should you rather take this as a regression, or a classification problem?
 - In our we problem our input consists of 25 numbers and our target is either 1 or 0, depending on the sum of all inputs.
-- This is a function with the dimensions R^25 -> {0,1}, and is a **classification** problem.
-- Non the less, in the LSTM layers we perform regression tasks with the function R^25 -> R (for the last hidden_output).
+- This is a function with the dimensions f:R^25 -> {0,1}, and therefore a **classification** problem.
+- Non the less, in the LSTM layers we perform regression tasks with the function f:R^25 -> R (for the last hidden_output).
 
 
