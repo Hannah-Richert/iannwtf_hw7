@@ -102,7 +102,7 @@ def visualize(train_losses,valid_losses,valid_accuracies):
         axs[1,j].set_title("Last Accuracy: "+str(round(last_accuracy,4)))
 
 
-    fig.legend([" Train_ds loss"," Valid_ds loss"," Valid_ds accuracy"],loc='best')
+    fig.legend([" Train_ds loss"," Valid_ds loss"," Valid_ds accuracy"])
     plt.xlabel("Training epoch")
     fig.tight_layout()
     plt.show()

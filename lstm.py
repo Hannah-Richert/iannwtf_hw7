@@ -8,20 +8,22 @@ class LSTMcell(tf.keras.Model):
 
         super(LSTMcell,self).__init__()
         self.units= units
+
         # forget gate components
-        self.forget_gate_x = Dense(self.units,bias_initializer='ones')
+        # bias of forget gate is initialized with ones instead of zeros
+        self.forget_gate_x = Dense(self.units,bias_initializer='ones',use_bias=True)
         self.forget_gate_h = Dense(self.units,use_bias=False)
 
         # input gate components
-        self.input_gate_x = Dense(self.units)
+        self.input_gate_x = Dense(self.units,use_bias=True)
         self.input_gate_h = Dense(self.units,use_bias=False)
 
         # cell memory components
-        self.memory_gate_x = Dense(self.units)
+        self.memory_gate_x = Dense(self.units,use_bias=True)
         self.memory_gate_h = Dense(self.units,use_bias=False)
 
         # out gate components
-        self.out_gate_x= Dense(self.units)
+        self.out_gate_x= Dense(self.units,use_bias=True)
         self.out_gate_h= Dense(self.units,use_bias=False)
 
     @tf.function
